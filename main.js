@@ -1,3 +1,4 @@
+//alert('hey');
 //fixed top nav
 var topNav = document.getElementById('topNav');
 window.onscroll = function(){
@@ -20,7 +21,6 @@ HomeBtn.addEventListener('click', function(){
 
 var imageFolder  = 'flowers';
 	var flowerNames = ['flowr4', 'flowr2', 'flowr3','flower1', 'flowr5', 'flowr6', 'flowr7' , 'flowr8' , 'flowr9', 'flowr10', 'flowr11' , 'flowr12', 'flow13', 'flowr14', 'flowr15', 'flowr16' , 'flowr18' ,'flowr19', 'flowr20'];
-	var flowerAlts  = ['Yellow' , 'Red' , 'Orange' , 'Blue' , 'White' , 'Black' , 'Pink' , 'Purple', 'Green' , 'Violet' , 'Daffodils'];
 	for(var i=0; i<flowerNames.length;i++){
 	var containerdiv =document.getElementById('Container1');
 	var img = document.createElement('img');
@@ -36,6 +36,8 @@ var imageFolder  = 'flowers';
 		//console.log('pleaseWait');
 		var modal_div = document.getElementById('Modal');
 		modal_div.style.display = 'block';
+		var Descr_div = document.getElementById('details');
+		Descr_div.style.display = 'block';
 		var ModalImg = document.getElementById('modal_img');
 		ModalImg.src= img.src; 
 		var imageAlt = document.getElementById('ImgAlt');
@@ -44,21 +46,31 @@ var imageFolder  = 'flowers';
 		//img = SlideShow(this);
 
 	}
-	// var indexSlide = 1;
-	// 	SlideShow(indexSlide);
-	// 	function PlusSlides(n){
-	// 		SlideShow(indexSlide+=n);
-	// 	}
-	// 	function SlideShow(n){
-	// 		var imageSlides = document.getElementsByClassName('images');
-	// 		var i , pos =0;
-	// 		if(n>imageSlides.length){
-	// 			indexSlide =1;
-	// 		}else if(n<1){
-	// 			indexSlide = imageSlides.length;
-	// 		}
-	// 		for(i=0;i<imageSlides.length;i++){
-	// 			imageSlides[i].style.display = '';
-	// 		}
-	// 		imageSlides[indexSlide-1].style.display = 'block';
-	// 	}
+	//Close div when an imagee is clicked;
+	function CloseDiv(){
+		var modal_div = document.getElementById('Modal');
+		modal_div.style.display = 'none';
+		var Descr_div = document.getElementById('details');
+		Descr_div.style.display = 'none';
+	}
+// 	//add or minus buttons
+// 	var up =true;
+// 	var value = 0;
+// 	var total = 30;
+// 	var increment = 1;
+
+// 	var div_counter=document.getElementById('Minu_Plus');
+// 	div_counter.innerHTML +='<span>'+increment+'</span>'
+// function PlusQnty(){
+// 	if(up== true && value <=total){
+// 		div_counter.innerHTML +=value+=increment;
+// 		if(value == total){
+// 			up = false;
+// 		}
+// 	}
+// }
+// function MinusQnty(){
+// 	document.getElementById('Minu_Plus').innerHTML+=--min;
+// 	console.log(addNumber);
+
+// }

@@ -136,6 +136,7 @@ body{
 }
 .details{
 	padding: 20px 30px;
+	/*display: none;*/
 }
 .Review_bar{
 	margin-top: 10px;
