@@ -6,19 +6,72 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<div class="image_container" id="Container1">
-		<img class="images" src="flowers/flower1.jpg" alt="Yellowush" onclick="OpenModal(this)">	
+	<div class="heading" id="topNav">
+		<button class="nav" id="button">&equiv;Home</button>
+		<input type="search" name="search" placeholder="Search here" id="search_box">
+		
+		<div style="clear: both;"></div>
 	</div>
-	<div id="Modal" class="Modal">
-		<span onclick="(this.parentElement.style.display = 'none')" class="Btn_close">&times;</span>
+		<div class="Nav_links" id="Navigation">
+			
+			<a href="#" onclick="Natural_flowers()">Natural Flowers</a>
+			<a href="#" onclick="Natural_flowers()">Artificial Flowers</a>
+			<a href="#" onclick="Natural_flowers()">InsideHouse Natural Flowers</a>
+			<a href="#" onclick="Natural_flowers()">Decoration Fowers Flowers</a>
+			<a href="#" onclick="Natural_flowers()">Wedding & Party Flowers</a>
+			<a href="#" onclick="Natural_flowers()">Lover's Gifts Flowers</a>
+		</div>
+		<div id="Modal" class="Modal">
+		<span onclick="CloseDiv()" class="Btn_close">&times;</span>
 		<div id="CaptionText"></div>
 		<div id="ImgAlt"></div>
 		<div class="Modal-content" id="Modal-content">
 			<img id="modal_img">
-			<a href="#" class="btn" onclick="PlusSlides(-1)">&#10094;</a>
-			<a href="#" class="btn btn_next" onclick="PlusSlides(1)">&#10095;</a>
 		</div>
 	</div>
+		<div class="details" id="details">
+			<button class="AddToCart">Add Item To Cart&#x1f6d2;</button>
+			<div style="clear: both;"></div>
+			<h1 id="FlowerName">Image Description of </h1><hr>
+
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, maiores! Asperiores quidem nobis ullam cum aliquam magni rem quaerat tempore.</p>
+			<div class="reviews">
+				<h3 style="padding-top: 10px;">Reviews</h3><hr>
+				<div class="Review_bar">
+					<div style="background: red; width: 20px;">1</div>
+					<div style="background: blue;width: 30px;">2</div>
+					<div style="background: orange;width: 40px">3</div>
+					<div style="background: gray;width: 50px;">4</div>
+					<div style="background: green; width:60px;">5</div>
+					<span >&starf;</span>
+					<span>&star;</span>
+					<span>&star;</span>
+					<span>&star;</span>
+					<span>&star;</span>
+				</div>
+
+			</div>
+			<h3 style="padding-top: 10px;">Quantity</h3><hr>
+			<div class="qnty">
+				<div class="box left">&plus;</div>
+				<div class=" box plus">&plus;1</div>
+				<div class="box right">&minus;</div>
+			</div>
+		</div>
+<div class="items_displayed_First">
+	<h2>&#8650;How About these amazing Fresh Flowers&#8650;</h2>
+</div>
+	<div class="image_container" id="Container1">
+		<img class="images" onclick="OpenModal(this)">	
+	</div>
+	
+	<footer>
+		<a href="index.html" class="Home_links">Home&#x1F3E0;</a>
+		<a href="#" class="Home_links" onclick="return Items_in_cart()">View Cart&#x1f6d2;</a>
+		<a href="#" class="Home_links" id="Vertical_nav">Category</a>
+		<a href="#" class="Home_links" style="float: right;">&copy; 2018 Floral_collection.com</a>
+		<div style="clear: both;"></div>
+	</footer>
 	<script type="text/javascript" src="main.js"></script>
 </body>
 </html>
