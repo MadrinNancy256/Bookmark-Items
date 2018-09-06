@@ -32,9 +32,22 @@
 		</div>
 	</div>
 		<div class="details" id="details">
-			<button class="AddToCart">Add Item To Cart&#x1f6d2;</button>
+			<h3 style="padding-top: 10px;">Quantity</h3><hr>
+		<div style="margin-bottom: 10px;">
+			<h4 id="addQntyName" style="padding: 4px 8px; text-align: center;font-size: 20px; color: white; background: red;"></h4>
+		</div>
+				<div class="qnty">
+					Decrea-
+				<span class="box"id="MinusQnty">&minus;</span>
+				<span class="box" id="Minus_Plus">&plus;01</span>
+				<span class="box"  id="PlusQnty" >&plus;</span>
+				Inccrea+
+			</div>
+			<button class="AddToCart" id="AddToCart">Add Item To Cart&#x1f6d2;</button>
 			<div style="clear: both;"></div>
-			<h1 id="FlowerName">Image Description of </h1><hr>
+			<div>
+				<h1 id="FlowerName">Image Description of </h1><hr>
+			</div>
 
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, maiores! Asperiores quidem nobis ullam cum aliquam magni rem quaerat tempore.</p>
 			<div class="reviews">
@@ -53,14 +66,7 @@
 				</div>
 
 			</div>
-			<h3 style="padding-top: 10px;">Quantity</h3><hr>
-			<div class="qnty">
-				<h4>Add or minus on items</h4>
-				<input type="number" name="addqnty" min="1" value="01" id="Qnty">
-				<!-- <div class="box" onclick="PlusQnty()">&plus;</div>
-				<div class=" box" id="Minu_Plus">&plus;0</div>
-				<div class="box"  onclick="MinusQnty()">&minus;</div> -->
-			</div>
+			
 		</div>
 <div class="items_displayed_First">
 	<h2>&#8650;How About these amazing Fresh Flowers&#8650;</h2>
@@ -73,9 +79,10 @@
 		<a href="index.html" class="Home_links">Home&#x1F3E0;</a>
 		<a href="#" class="Home_links" onclick="return Items_in_cart()">View Cart&#x1f6d2;</a>
 		<a href="#" class="Home_links" id="Vertical_nav" onclick="return VerticalNav()">Category</a>
-		<a href="#" class="Home_links" id="Vertical_nav">Account</a>
+		<a href="#" class="Home_links" onclick="return OpenAccountSettings()">Account</a>
 		<a href="#" class="Home_links" style="float: right;">&copy; 2018 Floral_collection.com</a>
 		<div style="clear: both;"></div>
+		<!-- <input type="number" name="addqnty" min="1" value="01" id="Qnty"> -->
 	</footer>
 	<script type="text/javascript" src="main.js"></script>
 </body>

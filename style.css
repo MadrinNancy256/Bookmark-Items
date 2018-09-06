@@ -15,6 +15,7 @@ body{
 	position: relative;
 	top: 0;
 	z-index: 1;
+	overflow: hidden;
 }
 #search_box{
 	width: 80%;
@@ -29,6 +30,7 @@ body{
 }
 .container{
 	margin-top: 100px;
+	/*overflow: scroll;*/
 	transition: 500ms ease-in-out;
 }
 .nav{
@@ -181,18 +183,20 @@ body{
 	padding: 4px;
 	cursor: pointer;
 }
+/*input for adding and subtracting*/
 .qnty{
 	max-width: 300px;
 	background: white;
 	border: 1px solid white;
-	display: flex;
+	padding: 10px;
+	text-align: center;
 }
 .box{
-	max-width: 60px;
+	/*max-width: 60px;*/
 	border: 1px solid black;
+	text-align: center;
 	padding: 10px;
-	margin: 2px;
-	cursor:pointer;;
+	cursor:pointer;
 }
 .AddToCart{
 	padding: 10px;
@@ -201,7 +205,30 @@ body{
 	background: red;
 	font-size: 20px;
 	font-weight: bold;
-	float:right
+	float:right;
+}
+.AddToCart:hover{
+	opacity: 0.8;
+	border: 1px solid black;
+}
+/*style the empty cart div */
+.emptyCart{
+	text-align: center;
+	color: gray;
+	font-size: 25px;
+	width: 60%;
+	margin: 0 auto;
+	padding: 40px 15px;
+	margin-bottom: 30px;
+}
+.emptyCart a{
+	text-align: center;
+	text-decoration: none;
+	color: white;
+	background: red;
+	padding: 10px;
+	font-size: 20px;
+	transition: 500ms ease;
 }
 footer{
 	background: rgba(0,0,0,0.2);
