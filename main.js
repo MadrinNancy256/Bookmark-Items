@@ -1,10 +1,14 @@
 //alert('hey');
 //fixed top nav
 var topNav = document.getElementById('topNav');
+// var fadespeed = 200, fadeTo = 0.5, topDistance = 30;
+// var inside = false;
 window.onscroll = function(){
+	//var position = window.onscrollTop();
 	if(window.pageYOffset>100){
 		topNav.style.position = 'fixed';
 	}
+
 }
 //HomeBtn clicked 'show and hide Nav'
 var HomeBtn = document.getElementById('button');
@@ -13,8 +17,10 @@ HomeBtn.addEventListener('click', function(){
 	var navigation_items = document.getElementById('Navigation');
 	if(navigation_items.style.display ==='none'){
 	navigation_items.style.display = 'block';
+
 	}else{
 		navigation_items.style.display = 'none';
+		navigation_items.className = 'Nav_links';
 	}
 });
 //body images loadded;
@@ -53,24 +59,24 @@ var imageFolder  = 'flowers';
 		var Descr_div = document.getElementById('details');
 		Descr_div.style.display = 'none';
 	}
-// 	//add or minus buttons
-// 	var up =true;
-// 	var value = 0;
-// 	var total = 30;
-// 	var increment = 1;
-
-// 	var div_counter=document.getElementById('Minu_Plus');
-// 	div_counter.innerHTML +='<span>'+increment+'</span>'
-// function PlusQnty(){
-// 	if(up== true && value <=total){
-// 		div_counter.innerHTML +=value+=increment;
-// 		if(value == total){
-// 			up = false;
-// 		}
-// 	}
-// }
-// function MinusQnty(){
-// 	document.getElementById('Minu_Plus').innerHTML+=--min;
-// 	console.log(addNumber);
-
-// }
+//Category button whn clicked
+var asideNav = document.getElementById('Navigation');
+var crossX = document.getElementById('times');
+function VerticalNav(){
+	console.log('hey');
+	crossX.style.display = 'block';
+	asideNav.className.replace('Nav_links' , 'verticalnav');
+	asideNav.className = "verticalnav";
+	asideNav.style.width = '200px';
+	asideNav.style.display = 'block';
+	document.getElementById('container').style.marginLeft = '200px';
+}
+//ContainerMarginBack
+function ContainerMarginBack(){
+	// 	asideNav.className.replace('verticalnav' , 'Nav_links');
+	// asideNav.className = "Nav_links";
+	asideNav.style.width = '0px';
+	asideNav.style.display = 'none';
+	document.getElementById('container').style.marginLeft = '0px';
+}
+//grab values of the items when "add item to cart button is clicked";
