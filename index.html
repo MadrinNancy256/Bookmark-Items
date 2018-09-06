@@ -6,14 +6,16 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+	
 	<div class="heading" id="topNav">
 		<button class="nav" id="button">&equiv;Home</button>
 		<input type="search" name="search" placeholder="Search here" id="search_box">
-		
 		<div style="clear: both;"></div>
 	</div>
+<div class="container" id="container">
 		<div class="Nav_links" id="Navigation">
-			
+			<span onclick="return ContainerMarginBack(this.parentElement.style.display ='none')" class="Btn_close" style="display: none" id="times">&times;</span>
+
 			<a href="#" onclick="Natural_flowers()">Natural Flowers</a>
 			<a href="#" onclick="Natural_flowers()">Artificial Flowers</a>
 			<a href="#" onclick="Natural_flowers()">InsideHouse Natural Flowers</a>
@@ -66,11 +68,12 @@
 	<div class="image_container" id="Container1">
 		<img class="images" onclick="OpenModal(this)">	
 	</div>
-	
+</div>	
 	<footer>
 		<a href="index.html" class="Home_links">Home&#x1F3E0;</a>
 		<a href="#" class="Home_links" onclick="return Items_in_cart()">View Cart&#x1f6d2;</a>
-		<a href="#" class="Home_links" id="Vertical_nav">Category</a>
+		<a href="#" class="Home_links" id="Vertical_nav" onclick="return VerticalNav()">Category</a>
+		<a href="#" class="Home_links" id="Vertical_nav">Account</a>
 		<a href="#" class="Home_links" style="float: right;">&copy; 2018 Floral_collection.com</a>
 		<div style="clear: both;"></div>
 	</footer>
