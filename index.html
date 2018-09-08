@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Lightbox</title>
+	<title>Home Shopping</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-	
+<body id="body">	
 	<div class="heading" id="topNav">
-		<button class="nav" id="button">&equiv;Home</button>
+		<a href="index.html" class="nav" id="button">&equiv;Home</a>
 		<input type="search" name="search" placeholder="Search here" id="search_box">
 		<div style="clear: both;"></div>
 	</div>
-<div class="container" id="container">
-		<div class="Nav_links" id="Navigation">
-			<span onclick="return ContainerMarginBack(this.parentElement.style.display ='none')" class="Btn_close" style="display: none" id="times">&times;</span>
-
+	<div class="verticalnav" id="Navigation">
+			<span onclick="return ContainerMarginBack(this.parentElement.style.display ='none')" class="Btn_close"id="times">&times;</span>
+			<div class="Des">
+				<h2>Choose Category</h2>
+			</div>
+		<div>
 			<a href="#" onclick="Natural_flowers()">Natural Flowers</a>
 			<a href="#" onclick="Natural_flowers()">Artificial Flowers</a>
 			<a href="#" onclick="Natural_flowers()">InsideHouse Natural Flowers</a>
@@ -23,7 +24,11 @@
 			<a href="#" onclick="Natural_flowers()">Wedding & Party Flowers</a>
 			<a href="#" onclick="Natural_flowers()">Lover's Gifts Flowers</a>
 		</div>
-		<div id="Modal" class="Modal">
+		</div>
+<div class="container" id="container">
+		
+	
+<div id="Modal" class="Modal">
 		<span onclick="CloseDiv()" class="Btn_close">&times;</span>
 		<div id="CaptionText"></div>
 		<div id="ImgAlt"></div>
@@ -43,7 +48,6 @@
 				<span class="box"  id="PlusQnty" >&plus;</span>
 				Inccrea+
 			</div>
-			<button class="AddToCart" id="AddToCart">Add Item To Cart&#x1f6d2;</button>
 			<div style="clear: both;"></div>
 			<div>
 				<h1 id="FlowerName">Image Description of </h1><hr>
@@ -68,14 +72,15 @@
 			</div>
 			
 		</div>
-<div class="items_displayed_First">
+	
+	<div class="items_displayed_First">
 	<h2>&#8650;How About these amazing Fresh Flowers&#8650;</h2>
 </div>
 	<div class="image_container" id="Container1">
 		<img class="images" onclick="OpenModal(this)">	
 	</div>
 </div>	
-	<footer>
+	<footer id="DisplayNoneWhenImgClicked">
 		<a href="index.html" class="Home_links">Home&#x1F3E0;</a>
 		<a href="#" class="Home_links" onclick="return Items_in_cart()">View Cart&#x1f6d2;</a>
 		<a href="#" class="Home_links" id="Vertical_nav" onclick="return VerticalNav()">Category</a>
@@ -83,6 +88,13 @@
 		<a href="#" class="Home_links" style="float: right;">&copy; 2018 Floral_collection.com</a>
 		<div style="clear: both;"></div>
 		<!-- <input type="number" name="addqnty" min="1" value="01" id="Qnty"> -->
+	</footer>
+	<footer style="display: none; background: purple;" id="DisplayWhenImgClicked">
+		<a href="index.html">Home&#x1F3E0;</a>
+		<a href="#"  onclick="return Items_in_cart()">View Cart&#x1f6d2;</a>
+		<a href="#"  onclick="return OpenAccountSettings()">Account</a>
+		<a href="#"class="AddToCart" id="AddToCart">Add Item To Cart&#x1f6d2;</a>
+		<!-- <div style="clear: both;"></div> -->
 	</footer>
 	<script type="text/javascript" src="main.js"></script>
 </body>

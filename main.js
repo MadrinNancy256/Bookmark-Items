@@ -42,57 +42,47 @@ var imageFolder  = 'flowers';
 	var modal_div = document.getElementById('Modal');
 	var ImagName = document.getElementById('FlowerName');
 	var addQntyName = document.getElementById('addQntyName');
+	var FooterNav = document.getElementById('DisplayWhenImgClicked');
+	var FooterNav2 = document.getElementById('DisplayNoneWhenImgClicked');
 	function OpenModal(img){
-		//console.log('pleaseWait');		
-		modal_div.style.display = 'block';		
-		Descr_div.style.display = 'block';		
-		ModalImg.src= img.src; 		
-		imageAlt.innerHTML = img.alt;
-		ImagName.innerHTML ='<h3>Image Description of '+ img.alt + '</h3>';
-		addQntyName.innerHTML = '<h4>Add Quantity for: '+img.alt;+ '</h4>';
-		//img = SlideShow(this);
-	}
+			//console.log('pleaseWait');
+			FooterNav2.style.display = 'none';
+			FooterNav.style.display = 'block';		
+				modal_div.style.display = 'block';	
+				Descr_div.style.display = 'block';	
+				ModalImg.src= img.src; 		
+				imageAlt.innerHTML = img.alt;
+				ImagName.innerHTML ='<h3>Image Description of '+ img.alt + '</h3>';
+				addQntyName.innerHTML = '<h4>Add Quantity for: '+img.alt;+ '</h4>';
+			}
 	//Close div when an imagee is clicked;
 	function CloseDiv(){
 		modal_div.style.display = 'none';
 		Descr_div.style.display = 'none';
+		FooterNav2.style.display = 'block';
+			FooterNav.style.display = 'none';
+
 	}
 //Category button whn clicked
 var asideNav = document.getElementById('Navigation');
-var crossX = document.getElementById('times');
 var container = document.getElementById('container');
 function VerticalNav(){
-	console.log('hey');
-	crossX.style.display = 'block';
-	asideNav.className.replace('Nav_links' , 'verticalnav');
-	asideNav.className = "verticalnav";
-	asideNav.style.width = '200px';
-	asideNav.style.display = 'block';
-	container.style.marginLeft = '200px';
+	//console.log('hey');	
+	if(asideNav.style.display ==='none'){
+		asideNav.style.width = '300px';
+		asideNav.style.display = 'block';
+		container.style.marginLeft = '300px';
+	}else{
+		asideNav.style.width = '0px';
+		asideNav.style.display = 'none';
+		container.style.marginLeft = '0px';
+	}
 }
 //ContainerMarginBack
 function ContainerMarginBack(){
-	// 	asideNav.className.replace('verticalnav' , 'Nav_links');
-	// asideNav.className = "Nav_links";
 	asideNav.style.width = '0px';
 	asideNav.style.display = 'none';
 	container.style.marginLeft = '0px';
-}
-//items in Cart 
-function Items_in_cart(){
-	//console.log('oops');
-	container.innerHTML = '';
-	if(container.innerHTML == ""){
-	container.innerHTML = '<div class="emptyCart"><h1> Ooopssss!!The Cart is Empty!Please Go Shopping</h1>'+ '<a href="index.html">Go Shopping!&#x1f6d2;</a>'
-	+'</div>';
-    }else{
-    	container.innerHTML= '<div>Hey</div>';
-    }
-}
-//Account button settings
-function OpenAccountSettings(){
-	container.innerHTML = '<div class="emptyCart"><h1> Account settings in process , Please wait thanks!</h1>'+ '<a href="index.html">BackToHome</a>'
-	+'</div>';
 }
 var num =0;
 var added = document.getElementById('Minus_Plus');
@@ -110,10 +100,18 @@ var plus = document.getElementById('MinusQnty').addEventListener('click', functi
 	}
 	
 });
+//items in Cart
+// Items_in_cart(AddItemsToCart, false);
 //grab values of the items when "add item to cart button is clicked";
 var AddToCart = document.getElementById('AddToCart');
-// var qntyValue = document.getElementById('Minus_Plus');
-AddToCart.addEventListener('click', function(){
+var qntyValue = document.getElementById('Minus_Plus');
+var Cart_img = document.getElementById('Cart_img');
+var Cart_img_title = document.getElementById('Title');
+var Cart_img_price = document.getElementById('Price');
+var Cart_img_qnty = document.getElementById('Quantities');
+var currency = '$';
+var price = 2.5;
+AddToCart.addEventListener('click', AddItemsToCart); function AddItemsToCart(){
 	if(added.innerHTML == 0){
 		alert('Cant Add zero item');
 		return false;
@@ -121,10 +119,61 @@ AddToCart.addEventListener('click', function(){
 	console.log('Bitch!,Grab values insteady!');
 	console.log(added.innerHTML);
 	console.log(ModalImg.src);
-
-	console.log(ImagName.innerHTML);
-	console.log(img.alt );
-	setTimeout(function(){
-		alert(ImagName.innerHTML + ' adde to Cart,thanks!');
-	}, 3000);
-});
+	 console.log(ImagName.innerHTML);
+	 var price_qnty = price*added.innerHTML;
+	console.log(price_qnty);
+	var itemsinStorage={
+		Itemimgsrc :ModalImg.src,
+		Itemdescript:ImagName.innerHTML,
+		Itemqnty:added.innerHTML,
+		Itemprice:price_qnty
+	}
+	if(localStorage.getItem('CartItemsInStorage')== null){
+		var CartItemsInStorage = [];
+		CartItemsInStorage.push(itemsinStorage);
+		localStorage.setItem('CartItemsInStorage', JSON.stringify(CartItemsInStorage));
+	}else{
+		var CartItemsInStorage = JSON.parse(localStorage.getItem('CartItemsInStorage'));
+		CartItemsInStorage.push(itemsinStorage);
+		localStorage.setItem('CartItemsInStorage', JSON.stringify(CartItemsInStorage));
+	}
+	var MainBody = document.getElementById('body');
+	var body = document.createElement('body');
+	body.setAttribute('onload' ,'fetchCartItems()' );
+	var div = document.createElement('div');
+	div.setAttribute('id', 'container3');
+	body.appendChild(div);
+	MainBody.appendChild(body);
+	// setTimeout(function(){
+	// 	alert(ImagName.innerHTML + ' adde to Cart,thanks!');
+	// }, 3000);
+};
+// function to display the Cart Items
+var DisplayCartItems = document.getElementById('container3');
+function fetchCartItems(){
+	var CartItemsInStorage = JSON.parse(localStorage.getItem('CartItemsInStorage'));
+	//console.log(CartItemsInStorage);
+	// CartItemsDisplayedIn Cart
+	DisplayCartItems.innerHTML = '';
+	for(var i=0;i<CartItemsInStorage.length;i++){
+		var Flowerimg = CartItemsInStorage[i].Itemimgsrc;
+		var FlowerDesc = CartItemsInStorage[i].Itemdescript;
+		var FlowerQuanty = CartItemsInStorage[i].Itemqnty;
+		var FlowerPrice = CartItemsInStorage[i].Itemprice;
+	}
+	 var output = '<div class="CartCont">'+
+	 			'<div class="imgdiv">'+
+	 			'<img src="'+Flowerimg +'" alt="flower"></div>'+
+	 			'<div class="Img_decrpt">'
+	 			+ FlowerDesc + FlowerQuanty + '<h2>$ '+ FlowerPrice+'</h2></div>'+
+	 			'</div>';
+	DisplayCartItems.innerHTML+= output;
+}
+function Items_in_cart(){
+	DisplayCartItems.style.display = 'block';
+}
+//Account button settings
+function OpenAccountSettings(){
+	container.innerHTML = '<div class="emptyCart"><h1> Account settings in process , Please wait thanks!</h1>'+ '<a href="index.html">BackToHome</a>'
+	+'</div>';
+}

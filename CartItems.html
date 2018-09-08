@@ -2,13 +2,57 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Items in The Cart</title>
+	<title>InCart</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<div class="haeder">
+	
+	<div class="heading" id="topNav" style="background: red;">
+		<div class="CartNavEdits">
+		<a href="#" class="edit_btns" style="float: left; margin-left: 10px;"><span class="icons">&#x1f589;</span>Edit Items</a>
+		<a href="#" class="edit_btns" style="float: right;margin-right: 10px;">Done <span class="icons" style="color: red;">&#10004;</span></a>
+	</div>
+		<div>
+		<h1 style="text-align: center;color: white;">Your Items in the Cart</h1>
+		</div>
+	</div>
+<div class="container" id="container">
+	<!-- Crat items starts frrom here -->
+	<div class="DisplayOptions">
+		<a href="#" class="edit_btns">AddTo Favourites <span class="icons hover" style="color: red;">&hearts;</span> </a>
+		<a href="#" class="edit_btns">Delete Item <span class="icons ">&#x1F5D1;</span></a>
 		
 	</div>
-	<div class="inCart" id="InCart"></div>
-<script type="text/javascript" src="main.js"></script>	
+	<div class="cart_container">
+		<div class="image_div">
+			<img id="Cart_img" src="flowers/flower1.jpg">
+		</div>
+		<div class="ImageTitle">
+			<div class="title" id="Title" style="">
+				<h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident, explicabo!</h4>
+			</div><hr>
+			<div class="price" id="Price">
+				<h4>Price:</h4>
+				<h2 class="box">$4.0</h2>
+			</div><hr>
+			<div class="Quantities" id="Quantities">
+				<h4>Quantity</h4>
+				<h2 class="box">- x1 -</h2>
+			</div>
+		</div>
+		<div class="total">Total</div>
+	<div class="total">Results</div>
+	</div>
+</div>
+			
+	<footer>
+		<a href="index.html" class="Home_links">Home&#x1F3E0;</a>
+		<a href="CartItems.html" class="Home_links">View Cart&#x1f6d2;</a>
+		<a href="#" class="Home_links" onclick="return OpenAccountSettings()">Account</a>
+		<a href="#" class="Home_links" style="float: right;">&copy; 2018 Floral_collection.com</a>
+		<div style="clear: both;"></div>
+		<!-- <input type="number" name="addqnty" min="1" value="01" id="Qnty"> -->
+	</footer>
+	<script type="text/javascript" src="main.js"></script>
 </body>
 </html>

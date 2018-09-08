@@ -18,10 +18,16 @@ body{
 	overflow: hidden;
 }
 #search_box{
-	width: 80%;
+	width: 50%;
 	padding: 10px;
 	border-radius: 10px;
 	/*float: right;*/
+	background: rgba(0,0,0,0.3);
+	font-size: 20px;
+	color: #fff;
+	font-family: Georgia;
+	/*padding: 0 10px 10px 0px;
+	margin-right: 10px;*/
 }
 #search_box:focus{
 	border: none;
@@ -42,14 +48,23 @@ body{
 	border-right: 3px solid black;
 	cursor: pointer;
 	color: #fff;
+	text-decoration: none;
 }
-.Nav_links{
-	/*margin-top: 50px;*/
+/*.Nav_links{
 	background: #000;
 	width: 100%;
 	display: none;
+}*/
+.Des{
+	border: 1px solid white;
+	color: white;
+	font-size: 20px;
+	text-align: center;
+	padding: 5px;
+	background: red;
+	margin-right: 40px;
 }
-.Nav_links a{
+/*.Nav_links a{
 	display: inline-block;
 	text-decoration: none;
 	color: white;
@@ -59,10 +74,9 @@ body{
 }
 .Nav_links a:hover , .verticalnav a:hover{
 	background: red;
-}
+}*/
 .verticalnav{
 	background: #000;
-	width: 100%;
 	display: none;
 	position: fixed;
 	left: 0;
@@ -118,6 +132,8 @@ body{
 	padding: 10px;
 	border-radius: 8px;
 	z-index: 1;
+	background: orange;
+	color: white;
 }
 .Btn_close:hover{
 	background: red;
@@ -162,7 +178,7 @@ body{
 }
 .details{
 	padding: 20px 30px;
-	/*display: none;*/
+	display: none;
 }
 .Review_bar{
 	margin-top: 10px;
@@ -230,6 +246,57 @@ body{
 	font-size: 20px;
 	transition: 500ms ease;
 }
+/*View Cart file styling starts form here*/
+.edit_btns{
+	text-align: center;
+	text-decoration: none;
+	padding: 10px;
+	color: #000;
+	background: #36a5;
+	font-size:20px;
+	font-weight: bold;
+	border: 1px solid black;
+	transition: 500ms ease;
+}
+.edit_btns:hover{
+	border-radius: 10px;
+	border: 1px solid white;
+	opacity: 0.8;
+}
+.DisplayOptions{
+	text-align: center;
+	/*display: none;*/
+	padding: 4px;
+	max-width: 500px;
+	margin: 0 auto;
+}
+.icons{
+	font-size: 30px;
+	font-weight: bold;
+	color: black;
+}
+.icons span:hover{
+	color: #fff;
+}
+.cart_container{
+	width: 90%;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding: 30px 10px;
+	grid-gap: 10px;
+	/*display: none;*/
+}
+.ImageTitle{
+	padding: 10px 20px;
+	background: white;
+}
+.total{
+	width:100%;
+	background: white;
+	padding: 10px;
+}
+/*and View Cart file styling Ends here;*/
 footer{
 	background: rgba(0,0,0,0.2);
 	color: white;
