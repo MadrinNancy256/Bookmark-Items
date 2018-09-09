@@ -9,18 +9,6 @@ window.onscroll = function(){
 		topNav.style.position = 'fixed';
 	}
 }
-//HomeBtn clicked 'show and hide Nav'
-var HomeBtn = document.getElementById('button');
-HomeBtn.addEventListener('click', function(){
-	//console.log('tsup');
-	var navigation_items = document.getElementById('Navigation');
-	if(navigation_items.style.display ==='none'){
-	navigation_items.style.display = 'block';
-	}else{
-		navigation_items.style.display = 'none';
-		navigation_items.className = 'Nav_links';
-	}
-});
 //body images loadded;
 
 var imageFolder  = 'flowers';
@@ -42,12 +30,15 @@ var imageFolder  = 'flowers';
 	var modal_div = document.getElementById('Modal');
 	var ImagName = document.getElementById('FlowerName');
 	var addQntyName = document.getElementById('addQntyName');
-	var FooterNav = document.getElementById('DisplayWhenImgClicked');
-	var FooterNav2 = document.getElementById('DisplayNoneWhenImgClicked');
+	var FooterNav1 = document.getElementById('DisplayWhenImgClicked');
+	var FooterNav2 = document.getElementById('DisplayedAtHome');
 	function OpenModal(img){
 			//console.log('pleaseWait');
-			FooterNav2.style.display = 'none';
-			FooterNav.style.display = 'block';		
+			CounterParent2.appendChild(span);
+			FooterNav1.style.display = 'block';
+			FooterNav1.style.display = 'flex';
+			FooterNav1.style.flex = 1;
+			FooterNav2.style.display = 'none';		
 				modal_div.style.display = 'block';	
 				Descr_div.style.display = 'block';	
 				ModalImg.src= img.src; 		
@@ -86,7 +77,7 @@ function ContainerMarginBack(){
 }
 var num =0;
 var added = document.getElementById('Minus_Plus');
-added.innerHTML = num++;
+added.innerHTML = 1;
 var plus = document.getElementById('PlusQnty').addEventListener('click', function(){
 	added.innerHTML = num++;	
 });
@@ -103,6 +94,12 @@ var plus = document.getElementById('MinusQnty').addEventListener('click', functi
 //items in Cart
 // Items_in_cart(AddItemsToCart, false);
 //grab values of the items when "add item to cart button is clicked";
+var CounterParent1 = document.getElementById('Home_ViewCart1');
+var CounterParent2 = document.getElementById('Home_ViewCart2');
+	var span = document.createElement('span');
+	span.setAttribute('class','Counter');
+	CounterParent1.appendChild(span);
+	span.innerHTML = 1;
 var AddToCart = document.getElementById('AddToCart');
 var qntyValue = document.getElementById('Minus_Plus');
 var Cart_img = document.getElementById('Cart_img');
@@ -137,21 +134,25 @@ AddToCart.addEventListener('click', AddItemsToCart); function AddItemsToCart(){
 		CartItemsInStorage.push(itemsinStorage);
 		localStorage.setItem('CartItemsInStorage', JSON.stringify(CartItemsInStorage));
 	}
-	var MainBody = document.getElementById('body');
-	var body = document.createElement('body');
-	body.setAttribute('onload' ,'fetchCartItems()' );
-	var div = document.createElement('div');
-	div.setAttribute('id', 'container3');
-	body.appendChild(div);
-	MainBody.appendChild(body);
-	// setTimeout(function(){
-	// 	alert(ImagName.innerHTML + ' adde to Cart,thanks!');
-	// }, 3000);
+	fetchCartItems();
+	setTimeout(function(){
+		alert(ImagName.innerHTML + ' adde to Cart,thanks!');
+	}, 3000);
 };
+var Results = document.getElementById('Results');
+function deleteItem(Flowerimg){
+	// console.log(Flowerimg,FlowerDesc,FlowerPrice,FlowerQuanty);
+	var CartItemsInStorage = JSON.parse(localStorage.getItem('CartItemsInStorage'));
+			CartItemsInStorage.splice(this.index, 1);
+	
+	localStorage.setItem('CartItemsInStorage', JSON.stringify(CartItemsInStorage));
+	fetchCartItems();
+}
 // function to display the Cart Items
-var DisplayCartItems = document.getElementById('container3');
+	// Edit Items in the function
 function fetchCartItems(){
 	var CartItemsInStorage = JSON.parse(localStorage.getItem('CartItemsInStorage'));
+	var DisplayCartItems = document.getElementById('container3');
 	//console.log(CartItemsInStorage);
 	// CartItemsDisplayedIn Cart
 	DisplayCartItems.innerHTML = '';
@@ -160,18 +161,60 @@ function fetchCartItems(){
 		var FlowerDesc = CartItemsInStorage[i].Itemdescript;
 		var FlowerQuanty = CartItemsInStorage[i].Itemqnty;
 		var FlowerPrice = CartItemsInStorage[i].Itemprice;
+		 var output =
+		 '<div class="box_selection" id="TickMark">'+
+		 '<input type="checkbox" value="items">'+'</div>'+
+		 '<div id="Results" class="Results">'+
+		'<div class="image_div">'+
+		'<img src="'+Flowerimg +'" alt="flower"></div>'+
+		'<div class="ImageTitle">'+
+		'<div class="title">'
+		+'<h4>' + FlowerDesc + '</h4><hr></div>' +
+		'<div class="price"><h4>Price:</h4>'+
+		'<input type="text" class="box" name="Price" id="Price" value="'+FlowerPrice +'"></h2></div><hr>'+
+		'<div class="Quantities">'+
+	'<h4>Quantity:</h4><h3 class="box">X'+ FlowerQuanty+'</h3></div>'+'<a href="#" onclick="deleteItem(\''+Flowerimg+'\')" class="box">Delete</a>'
+	+'</div></div>';
+		
+		DisplayCartItems.innerHTML += output;
 	}
-	 var output = '<div class="CartCont">'+
-	 			'<div class="imgdiv">'+
-	 			'<img src="'+Flowerimg +'" alt="flower"></div>'+
-	 			'<div class="Img_decrpt">'
-	 			+ FlowerDesc + FlowerQuanty + '<h2>$ '+ FlowerPrice+'</h2></div>'+
-	 			'</div>';
-	DisplayCartItems.innerHTML+= output;
+	var count = CartItemsInStorage.length;
+	console.log(count);
+	var arr = document.getElementsByName('Price');
+	var tot = 0;
+	for(var i =0; i<arr.length;i++){
+		if(parseFloat(arr[i].value)){
+			tot+=parseFloat(arr[i].value);
+		}
+	}
+	console.log(tot);
 }
-function Items_in_cart(){
-	DisplayCartItems.style.display = 'block';
-}
+	
+// function showMark(){
+// 	console.log('clicked');
+// 	if(Mark.style.display =='none'){
+// 	Mark.style.display= 'block';
+// 	}else{
+// 		Mark.style.display= 'none';
+// 	}
+// }
+function DisplayEdtOptions(){
+	// console.log('clicked');
+	var Cont = document.getElementById('container3');
+	var Mark = document.getElementById('TickMark');
+	var EditOptions = document.getElementById('Nav12');
+	EditOptions.style.display= 'block';
+	EditOptions.style.display= 'flex';
+	Mark.style.display = 'block';
+	// Cont.className.replace('cart_container' , 'Grid_cont');
+	// Cont.className = "Grid_cont";
+	// Results.className.replace('Results', '');
+	// Results.className = "";	
+	}
+// <span class="Counter"></span>
+// function Items_in_cart(){
+// 	DisplayCartItems.style.display = 'block';
+// }
 //Account button settings
 function OpenAccountSettings(){
 	container.innerHTML = '<div class="emptyCart"><h1> Account settings in process , Please wait thanks!</h1>'+ '<a href="index.html">BackToHome</a>'

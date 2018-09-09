@@ -80,21 +80,18 @@
 		<img class="images" onclick="OpenModal(this)">	
 	</div>
 </div>	
-	<footer id="DisplayNoneWhenImgClicked">
-		<a href="index.html" class="Home_links">Home&#x1F3E0;</a>
-		<a href="#" class="Home_links" onclick="return Items_in_cart()">View Cart&#x1f6d2;</a>
-		<a href="#" class="Home_links" id="Vertical_nav" onclick="return VerticalNav()">Category</a>
-		<a href="#" class="Home_links" onclick="return OpenAccountSettings()">Account</a>
-		<a href="#" class="Home_links" style="float: right;">&copy; 2018 Floral_collection.com</a>
-		<div style="clear: both;"></div>
-		<!-- <input type="number" name="addqnty" min="1" value="01" id="Qnty"> -->
-	</footer>
-	<footer style="display: none; background: purple;" id="DisplayWhenImgClicked">
-		<a href="index.html">Home&#x1F3E0;</a>
-		<a href="#"  onclick="return Items_in_cart()">View Cart&#x1f6d2;</a>
+	<footer class="footer Nav1" id="DisplayWhenImgClicked" style="flex: 1;">
+		<a href="index.html">Home</a>
+		<a href="CartItems.html" id="Home_ViewCart1">View Cart&#x1f6d2;</a>
 		<a href="#"  onclick="return OpenAccountSettings()">Account</a>
-		<a href="#"class="AddToCart" id="AddToCart">Add Item To Cart&#x1f6d2;</a>
-		<!-- <div style="clear: both;"></div> -->
+		<a href="#" class="Home_links">&hearts; Save</a>
+		<a href="#" id="AddToCart" style="background: red; color: white;">Add To Cart&#x1f6d2;</a>
+	</footer> 
+	<footer  class="footer Nav2" id="DisplayedAtHome">
+		<a href="index.html" style="background: red;">Home&#x1F3E0;</a>
+		<a href="index.html">Category</a>
+		<a href="CartItems.html" id="Home_ViewCart2">View Cart&#x1f6d2;</a>
+		<a href="#"  onclick="return OpenAccountSettings()">Account</a>
 	</footer>
 	<script type="text/javascript" src="main.js"></script>
 </body>
