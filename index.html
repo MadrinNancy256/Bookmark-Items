@@ -25,9 +25,24 @@
 			<a href="#" onclick="Natural_flowers()">Lover's Gifts Flowers</a>
 		</div>
 		</div>
-<div class="container" id="container">
-		
-	
+<div class="SlidesContainer">
+	<div class="bodyLoadSliders">
+		<img src="flowers/slider.jpg" alt="slider1" class="sliders">
+		<img src="flowers/yellwish.jpg" alt="slider2" class="sliders">
+		<img src="flowers/slider3.jpg" alt="slider3" class="sliders">
+		<img src="flowers/white_rose.jpg" alt="slider4" class="sliders">
+	</div>
+	<a href="#" class="btn prev" onclick="PrevNextbtns(-1)">&#10094;</a>
+	<a href="#" class="btn next" onclick="PrevNextbtns(1)">&#10095;</a>
+</div>
+<div style="text-align: center;">
+		<span class="dots" onclick="CurrentSlide(1)">1</span>
+
+		<span class="dots" onclick="CurrentSlide(2)">2</span>
+		<span class="dots" onclick="CurrentSlide(3)">3</span>
+		<span class="dots" onclick="CurrentSlide(4)">4</span>
+	</div>
+<div class="container" id="container">	
 <div id="Modal" class="Modal">
 		<span onclick="CloseDiv()" class="Btn_close">&times;</span>
 		<div id="CaptionText"></div>

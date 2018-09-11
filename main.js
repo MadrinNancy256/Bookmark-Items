@@ -229,15 +229,16 @@ function LoadFavsItems(){
 		var imgDesc= FavsArray[i].ImageDesc;
 		var Imgprice = FavsArray[i].imagePrice;
 
-		var FavsOutput = 
+		var FavsOutput =
+				'<div class="resultsFavCont">'+
 				'<div class="FavsImg">'+
 				'<img src="'+Imagename+'">'+
 				'</div>'+
 				'<div class="FavsDesc">'+
-				'<p>'+ imgDesc+'</p>'+
-				'<h4>' +Imgprice+'</h4>'+
+				'<h3>'+ imgDesc+'</h3>'+
+				'<h4> Only at $' +Imgprice+'</h4>'+
 				'<a href="#" onclick="AddItemsToCart()">AddToCart</a>'+
-				'</div>';
+				'</div></div>';
 				FavsDiv.innerHTML+=FavsOutput;
 	}
 }
@@ -259,4 +260,64 @@ function LoadFavsItems(){
 function OpenAccountSettings(){
 	container.innerHTML = '<div class="emptyCart"><h1> Account settings in process , Please wait thanks!</h1>'+ '<a href="index.html">BackToHome</a>'
 	+'</div>';
+}
+
+
+// sliders
+var slidersIndex =0;
+SlidersMovement();
+var sliders , dots;
+function SlidersMovement(){
+	var i;
+	 sliders = document.getElementsByClassName('sliders');
+	 dots = document.getElementsByClassName('dots');
+	for(i=0;i<sliders.length;i++){
+		sliders[i].style.display = 'none';
+	}
+	slidersIndex++;
+	if(slidersIndex > sliders.length){
+		slidersIndex=1;
+	}
+	for(i=0; i<dots.length;i++){
+	dots[i].className = dots[i].className.replace("  active" , "");
+}
+	sliders[slidersIndex-1].style.display = 'block';
+	dots[slidersIndex-1].className+= " active";
+	setTimeout(SlidersMovement, 2000);
+}
+function PrevNextbtns(position){
+	// slidersIndex = slidersIndex + n;
+	// clearTimeout(time);
+	// SlidersMovement(slidersIndex);
+	//SlidersMovement(slidersIndex+=n);
+	slidersIndex+=position;
+	if(slidersIndex > sliders.length){
+		slidersIndex=1;
+	}else if(slidersIndex< 1){
+		slidersIndex= sliders.length;
+	}
+	for(i=0;i<sliders.length;i++){
+		sliders[i].style.display = 'none';
+	}
+	for(i=0; i<dots.length;i++){
+	dots[i].className = dots[i].className.replace(" active" , "");
+	sliders[slidersIndex-1].style.display = 'block';
+	dots[slidersIndex-1].className+= "active";
+	}
+}
+function CurrentSlide(index){
+	// SlidersMovement(slidersIndex=n);
+	if(index > sliders.length){
+		index=1;
+	}else if(index< 1){
+		index= sliders.length;
+	}
+	for(i=0;i<sliders.length;i++){
+		sliders[i].style.display = 'none';
+	}
+	for(i=0; i<dots.length;i++){
+	dots[i].className = dots[i].className.replace(" active " , "");
+	sliders[index-1].style.display = 'block';
+	dots[index-1].className+= "active";
+	}
 }
