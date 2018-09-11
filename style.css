@@ -274,13 +274,35 @@ body{
 	font-weight: bold;
 	color: white;
 }
-#Nav12{
-	display: none;
-	flex: 1;
-	background: blue;
+.Cartfooter{
+	width: 100%;
+	background: red;
+	position: fixed;
+	bottom: 0;
+	padding: 10px;
+}
+.Cartfooter a{
+	text-decoration: none;
+	padding: 10px;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+}
+.Cartfooter input{
+	padding: 10px;
+	width: 50%;
+	position: absolute;
+	right: 10px;
+	top: 5px;
+	background: red;
+	color: white;
+	font-size: 20px;
+	border: none;
+	outline: none;
+	border-left: 2px solid white;
 }
 .cart_container{
-	width: 60%;
+	width: 100%;
 	margin: 20px auto;
 	/*display: grid;
 	grid-template-columns: 80px 2fr;
@@ -294,13 +316,14 @@ body{
 	grid-gap: 10px;
 }
 .Results{
+	width:60%;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 10px;
 }
-.Results:hover{
+/*.Results:hover{
 	opacity: 0.8;
-}
+}*/
 .image_div img{
 	min-width: 300px;
 	max-height: 200px;
@@ -344,6 +367,29 @@ input[type="checkbox"]{
 	padding: 5px;
 	background: white;
 	outline: none;
+}
+.options{
+	display: flex;
+	overflow: hidden;
+	margin-top: 10px;
+}
+.options a{
+	text-decoration: none;
+	color: white;
+	padding: 8px 14px;
+	cursor: pointer;
+	font-size: 20px;
+	background: red;
+	transition: 50ms ease;
+	flex: 1;
+}
+.options a:first-child{
+	margin-right: 10px;
+}
+.options a:hover{
+	opacity: 0.8;
+	border-radius: 10px;
+	color: black;
 }
 /*and View Cart file styling Ends here;*/
 .footer{

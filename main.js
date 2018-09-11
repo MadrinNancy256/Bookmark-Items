@@ -119,13 +119,14 @@ AddToCart.addEventListener('click', AddItemsToCart); function AddItemsToCart(){
 	 console.log(ImagName.innerHTML);
 	 var price_qnty = price*added.innerHTML;
 	console.log(price_qnty);
+
 	var itemsinStorage={
 		Itemimgsrc :ModalImg.src,
 		Itemdescript:ImagName.innerHTML,
 		Itemqnty:added.innerHTML,
 		Itemprice:price_qnty
-	}
-	if(localStorage.getItem('CartItemsInStorage')== null){
+	};
+	if(localStorage.getItem('CartItemsInStorage')===null){
 		var CartItemsInStorage = [];
 		CartItemsInStorage.push(itemsinStorage);
 		localStorage.setItem('CartItemsInStorage', JSON.stringify(CartItemsInStorage));
@@ -134,36 +135,58 @@ AddToCart.addEventListener('click', AddItemsToCart); function AddItemsToCart(){
 		CartItemsInStorage.push(itemsinStorage);
 		localStorage.setItem('CartItemsInStorage', JSON.stringify(CartItemsInStorage));
 	}
-	fetchCartItems();
+	//localStorage.etItem('Cat' , 'STopCating UP');
+	
+	// console.log(localStorage.setItem('CartItemsInStorage' , 'watevrr'));
+	// localStorage.removeItem('CartItemsInStorage');
+	// console.log(localStorage.getItem('CartItemsInStorage'));
 	setTimeout(function(){
 		alert(ImagName.innerHTML + ' adde to Cart,thanks!');
 	}, 3000);
-};
+	fetchCartItems(); 
+}
 var Results = document.getElementById('Results');
 function deleteItem(Flowerimg){
-	// console.log(Flowerimg,FlowerDesc,FlowerPrice,FlowerQuanty);
 	var CartItemsInStorage = JSON.parse(localStorage.getItem('CartItemsInStorage'));
 			CartItemsInStorage.splice(this.index, 1);
-	
 	localStorage.setItem('CartItemsInStorage', JSON.stringify(CartItemsInStorage));
 	fetchCartItems();
 }
+// add Favs button;
+function AddToFavs(img , desc , price){
+	// alert('added');
+	var ObjectItems = {
+		imageFolder:img,
+		ImageDesc :desc,
+		imagePrice:price
+	};
+	console.log(ObjectItems);
+	if(localStorage.getItem('FavsStorage') === null){
+		var FavsArray = [];
+		FavsArray.push(ObjectItems);
+		localStorage.setItem('FavsStorage' ,JSON.stringify(FavsArray));
+	}else{
+		var FavsArray = JSON.parse(localStorage.getItem('FavsStorage'));
+		FavsArray.push(ObjectItems);
+		localStorage.setItem('FavsStorage', JSON.stringify(FavsArray));
+	}
+}
+
 // function to display the Cart Items
 	// Edit Items in the function
 function fetchCartItems(){
-	var CartItemsInStorage = JSON.parse(localStorage.getItem('CartItemsInStorage'));
+var CartItemsInStorage = JSON.parse(localStorage.getItem('CartItemsInStorage'));
+	
 	var DisplayCartItems = document.getElementById('container3');
-	//console.log(CartItemsInStorage);
+	console.log(CartItemsInStorage);
 	// CartItemsDisplayedIn Cart
 	DisplayCartItems.innerHTML = '';
-	for(var i=0;i<CartItemsInStorage.length;i++){
+	for(var i=0;i < CartItemsInStorage.length;i++){
 		var Flowerimg = CartItemsInStorage[i].Itemimgsrc;
 		var FlowerDesc = CartItemsInStorage[i].Itemdescript;
 		var FlowerQuanty = CartItemsInStorage[i].Itemqnty;
 		var FlowerPrice = CartItemsInStorage[i].Itemprice;
 		 var output =
-		 '<div class="box_selection" id="TickMark">'+
-		 '<input type="checkbox" value="items">'+'</div>'+
 		 '<div id="Results" class="Results">'+
 		'<div class="image_div">'+
 		'<img src="'+Flowerimg +'" alt="flower"></div>'+
@@ -171,13 +194,17 @@ function fetchCartItems(){
 		'<div class="title">'
 		+'<h4>' + FlowerDesc + '</h4><hr></div>' +
 		'<div class="price"><h4>Price:</h4>'+
-		'<input type="text" class="box" name="Price" id="Price" value="'+FlowerPrice +'"></h2></div><hr>'+
+		'<input type="text" class="box" name="Price" value="'+FlowerPrice +'"></h2></div>'+
 		'<div class="Quantities">'+
-	'<h4>Quantity:</h4><h3 class="box">X'+ FlowerQuanty+'</h3></div>'+'<a href="#" onclick="deleteItem(\''+Flowerimg+'\')" class="box">Delete</a>'
+	'<h4>Quantity:</h4><h3 class="box">X'+ FlowerQuanty+'</h3></div>'+
+	'<div class="options">'+
+	'<a href="#" onclick="deleteItem(\''+Flowerimg+'\')" >Delete</a>'+
+	'<a href="#" onclick="AddToFavs(\''+Flowerimg+'\', \''+FlowerDesc+'\', \''+FlowerPrice+'\')">AddToFavs&hearts;</a></div>'
 	+'</div></div>';
 		
 		DisplayCartItems.innerHTML += output;
 	}
+	var TotalDiv = document.getElementById('total');
 	var count = CartItemsInStorage.length;
 	console.log(count);
 	var arr = document.getElementsByName('Price');
@@ -185,11 +212,37 @@ function fetchCartItems(){
 	for(var i =0; i<arr.length;i++){
 		if(parseFloat(arr[i].value)){
 			tot+=parseFloat(arr[i].value);
-		}
+		} 
+		TotalDiv.value= '$'+tot;
 	}
-	console.log(tot);
+
+	// console.log(tot);
+ } 
+
+function LoadFavsItems(){
+	var FavsArray = JSON.parse(localStorage.getItem('FavsStorage'));
+	var FavsDiv = document.getElementById('FavsCont');
+	FavsDiv.innerHTML= '';
+	//console.log(FavsArray);
+	for(var i =0;i<FavsArray.length;i++){
+		var Imagename = FavsArray[i].imageFolder;
+		var imgDesc= FavsArray[i].ImageDesc;
+		var Imgprice = FavsArray[i].imagePrice;
+
+		var FavsOutput = 
+				'<div class="FavsImg">'+
+				'<img src="'+Imagename+'">'+
+				'</div>'+
+				'<div class="FavsDesc">'+
+				'<p>'+ imgDesc+'</p>'+
+				'<h4>' +Imgprice+'</h4>'+
+				'<a href="#" onclick="AddItemsToCart()">AddToCart</a>'+
+				'</div>';
+				FavsDiv.innerHTML+=FavsOutput;
+	}
 }
-	
+// 	// fetchCartItems();
+// }
 // function showMark(){
 // 	console.log('clicked');
 // 	if(Mark.style.display =='none'){
@@ -198,19 +251,6 @@ function fetchCartItems(){
 // 		Mark.style.display= 'none';
 // 	}
 // }
-function DisplayEdtOptions(){
-	// console.log('clicked');
-	var Cont = document.getElementById('container3');
-	var Mark = document.getElementById('TickMark');
-	var EditOptions = document.getElementById('Nav12');
-	EditOptions.style.display= 'block';
-	EditOptions.style.display= 'flex';
-	Mark.style.display = 'block';
-	// Cont.className.replace('cart_container' , 'Grid_cont');
-	// Cont.className = "Grid_cont";
-	// Results.className.replace('Results', '');
-	// Results.className = "";	
-	}
 // <span class="Counter"></span>
 // function Items_in_cart(){
 // 	DisplayCartItems.style.display = 'block';
