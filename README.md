@@ -8,7 +8,7 @@
 
 **Anoteher imporatnt thing is that , this isnt areal web application, was just wondering *if maybe*, i can actaully be able use javascript and do something like aweb applicaion.***am actually new to programming and i'm **self-Teaching** ma self so please be Understanding*
 
-##Btw ,Used  **ClubFactory.com**as my template,if you dont mind you can check it out  for amazing styles and others stuffs as well.
+##Btw ,Used  **ClubFactory.com** as my template,if you dont mind you can check it out  for amazing styles and others stuffs as well.
 
 #Most importantly am sorry about my English and spellings didnt study that much though:) 
 
@@ -17,7 +17,9 @@
 
 *Got afew questions below;*
 #How to make auser login Once?;
-#How to actually make the webpage change language when the user selects his/her native lnaguge listed;
+
+#How to actually make the webpage change language when the user selects his/her native language listed;
+
 #How to use Readme.md(syntax), is it possible to upload avideo or photo in it?
 
 #Your support is much apperciated! Thanks!
