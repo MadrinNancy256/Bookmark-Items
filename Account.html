@@ -19,15 +19,15 @@
 			display:flex;
 			font-size: 20px;
 			text-align: center;
-		}
-		label{
-			font-size: 20px;
-			font-weight: bold;
-			border-bottom:2px solid white;
+			position: relative;
+			top: 0;
+			width: 100%;
+			overflow: hidden;
 		}
 		.settings{
 			flex: 1;
 			padding: 10px;
+			cursor: pointer;
 		}
 		.center{
 			flex: 2;
@@ -38,18 +38,23 @@
 		.liveChat{
 			flex: 1;
 			padding: 10px;
+			cursor: pointer;
 		}
 		.accHeader div:hover{
 			background: black;
 		}
+		.AccContainer{
+			/*margin-top:20px;*/
+			overflow:hidden;
+			/*height: 100%; */
+		}
 		.PersonalInfo{
+			overflow:hidden;
 			background: red;
 			color: white;
 			display: flex;
 			position: relative;
 			padding: 10px;
-			border-bottom-left-radius: 20px;
-			border-bottom-right-radius: 20px;
 		}
 		.PersonalInfo input[type="image"]{
 			border-radius: 50%;
@@ -80,6 +85,8 @@
 		}
 		.orders{
 			padding: 10px;
+			border-top-left-radius: 20px;
+			border-top-right-radius: 20px;
 		}
 		.View_Orders{
 			float: right;
@@ -118,7 +125,7 @@
 			margin-right: 20px;
 			margin-top:-20px; 
 		}
-		select{
+		.select select{
 			padding: 10px;
 			color: white;
 			background: black;
@@ -126,25 +133,104 @@
 			border: none;
 			outline: none;
 		}
+		.inputs label{
+			font-size: 20px;
+			font-weight: bold;
+			border-bottom:2px solid white;
+		}
 		.home{
 			width: 100%;
 			background: red;
 			color: white;
 			text-align: center;
 			padding: 10px;
-			position: fixed;
-			bottom: 0;
+		}
+		.appendedAnchor{
+			color: white;
 		}
 		.home a{
 			color: white;
 			font-size: 20px;
 			font-weight: bold;
 		}
+		/*style the eidits*/
+		.setInfo{
+			padding: 10px 30px;
+			background: silver;
+			color: white;
+		}
+		.setInfo a {
+			color: #000;
+			padding:100px  10px;
+		}
+		.setInfo a h2{
+			padding:10px;
+			float: left;
+		}
+		.setInfo a span{
+			font-size: 25px;
+			font-weight: bold;
+			float: right;
+		}
+		.setInfo a:after{
+			content: "";
+			display: table;
+			clear: both;
+		}
+		form{
+			padding: 10px 20px;
+		}
+		.peronsal .form-groups{
+			padding: 10px;
+		}
+		.peronsal .form-groups:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.peronsal .form-groups label{
+			font-size: 18px;
+			float: left;
+			/*border-right: 2px solid black;
+			width: 20%;*/
+		}
+		.peronsal{
+			display: none;
+		}
+		.peronsal .form-groups input[type="text"],input[type="email"],input[type="image"],input[type="tel"],input[type="number"], select{
+			padding: 10px;
+			margin-left: 20px;
+			float: right;
+			width: 40%;
+		}
+		.peronsal .form-groups input[type="image"]{
+			width: 150px;
+			height: 100px;
+			border-radius: 50%;
+		}
+		.peronsal .form-groups input[type="radio"]{
+			/*text-align: center;*/
+			width:100px;
+			transform: scale(1.3);
+		}
+		.textarea{
+			padding: 10px;
+			margin-bottom: 50px;
+		}
+		.textarea label{
+			font-size: 18px;
+		}
+		textarea{
+			width: 100%;
+			font-size: 18px;
+			color: orange;
+			padding: 10px;
+		}
 	</style>
 </head>
 <body onload="openSettings()">
-<div class="accHeader">
-	<div class="settings">
+<div class="accHeader" id="AcctopNav">
+	<div class="settings" onclick="OpenPersonalSettings(this)">
 		<h3>&#9881;</h3>
 	</div>
 	<div class="center">
@@ -154,13 +240,14 @@
 		<h3>LiveChat</h3>
 	</div>
 </div><hr>
+<div class="AccContainer" id="AccContainer">
 <div class="PersonalInfo">
 	<div class="overall">
 		<div class="inputs">
 			<input type="image" src="flowers/flower1.jpg" alt="editImage">
 		</div>
 		<div class="edit">
-			<button class="editPen">editInfo&#128394;</button>
+			<button class="editPen">EditInfo&#128394;</button>
 		</div>
 	</div>
 	<div class="info">
@@ -182,7 +269,7 @@
 		<a href="#">View All&#10095;</a>
 	</div>
 	<div style="clear: both;"></div>
-</div>
+
 <div class="ordersDes">
 	<a href="#">Unpaid
 		<span>0</span></a>
@@ -191,10 +278,15 @@
 	<a href="#">Returned<span>0</span></a>
 	<a href="#">Cancelled<span>0</span></a>
 </div>
+</div>
 <div class="orders service">
 	<div class="serv">
 		<h2>Services</h2>
 	</div>
+	<div class="View_Orders">
+		<a href="#">View All&#10095;</a>
+	</div>
+	<div style="clear: both;"></div>
 	<div class=" ordersDes servs">
 		<a href="#">Invite Friends</a>
 		<a href="#">Recent Viewed</a>
@@ -251,6 +343,120 @@
 <div class="home">
 	<a href="index.html">Backhome</a>
 </div>
-<script type="text/javascript" src="main.js"></script>	
+</div>
+<script type="text/javascript" src="main.js"></script>
+<script>
+	var AcctopNav = document.getElementById('AcctopNav');
+	var AccContainer = document.getElementById('AccContainer');
+	window.onscroll = function(){
+		if(window.pageYOffset > 100){
+			AcctopNav.style.position = 'fixed';
+			AcctopNav.style.top = 0;
+			AccContainer.style.marginTop = '50px';
+		}
+	}
+
+	function OpenPersonalSettings(text){
+		//alert('hello user');
+		text.innerHTML =
+		'<a href="Account.html" class="appendedAnchor">Back</a>';
+		AccContainer.innerHTML = '';
+		var output = '<div class="setInfo">'+
+	'<div class="SetPersonal">'+
+		'<a href="#" onclick="OpenPersonal()">'+
+			'<h2>MyPersonal Info</h2>'+
+			'<span> &#10095;</span>'+
+		'</a><hr>'+
+		'<div class="peronsal" id="OpenPersonal">'+
+			'<form action="">'+
+				'<div class="form-groups">'+
+					'<label for="">Your ProfilePicture:</label>'+
+					'<input type="image" src="flowers/flowr2.jpg" name="yourImage" alt="export profilePicture">'+
+				'</div>'+
+				'<div class="form-groups">'+
+					'<label for="">Your Name:</label>'+
+					'<input type="text" name="fname" placeholder="editYour name..">'+
+				'</div>'+
+				'<div class="form-groups">'+
+					'<label for="">Your E-mail:</label>'+
+					'<input type="email" name="femail" placeholder="editYour email..">'+
+				'</div>'+
+				'<div class="form-groups">'+
+					'<label for="">Your TelephoneNumber:</label>'+
+					'<input type="tel" name="ftel" placeholder="EditYour TelephoneNumber..">'+
+				'</div>'+
+				'<div class="form-groups">'+
+					'<label for="">Gender:</label>'+
+					'<input type="radio" name="gender" value="male">Female'+
+					'<input type="radio" name="gender" value="Female">Male'+
+				'</div>'+
+			'</form>'+
+		'</div>'+
+		'<a href="#" onclick="Openshiping()">'+
+			'<h2>MyShipping Address</h2>'+
+			 '<span>&#10095;</span>'+
+		'</a><hr>'+
+		'<div class="peronsal" id="Openshiping">'+
+			'<form>'+
+				'<div class="form-groups">'+
+					'<label for="country">Select Country:</label>'+
+					'<select name="country" id="country">'+
+						'<option>Angola</option>'+
+						'<option>Algeria</option>'+
+						'<option>USA</option>'+
+						'<option>UK</option>'+
+						'<option>Uganda</option>'+
+						'<option>Kenya</option>'+
+						'<option>UAE</option>'+
+						'<option>Spain</option>'+
+						'<option>Saudi Arabia</option>'+
+						'<option>India</option>'+
+						'<option>Korea</option>'+
+						'<option>Kuwait</option>'+
+					'</select>'+
+				'</div>'+
+				'<div class="form-groups">'+
+					'<label for="country">Enter City:</label>'+
+					'<input type="text" name="city" placeholder="Enter your city...">'+
+				'</div>'+
+				'<div class="form-groups">'+
+					'<label for="country">Enter CityArea:</label>'+
+					'<input type="text" name="cityArea" placeholder="Enter your cityarea...">'+
+				'</div>'+
+				'<div class="form-groups">'+
+					'<label for="country">HouseNumber</label>'+
+					'<input type="text" name="houseno" placeholder="Enter your HouseNumber...">'+
+				'</div>'+
+				'<div class="form-groups">'+
+					'<label for="country">Zip Code:<i>optional</i></label>'+
+					'<input type="number" name="zipcode" placeholder="Enter your zipcode...">'+
+				'</div>'+
+			'</form>'+
+		'</div>'+
+		'<a href="#" onclick="OpenFeeds()">'+
+					'<h2>Leave Feedbacks</h2>'+
+					'<span>&#10095;</span>'+
+				'</a><hr>'+
+		'<div class="peronsal textarea" id="OpenFeeds">'+
+			'<label for="comment">Leave feedBack:</label><br>'+
+			'<textarea></textarea>'+
+		'</div>'+
+	'</div>'+
+'</div>';
+AccContainer.innerHTML += output;
+	}
+	function OpenPersonal(){
+		var OpenPersonal = document.getElementById('OpenPersonal');
+		OpenPersonal.style.display = 'block';
+	}
+function Openshiping(){
+	var Openshiping = document.getElementById('Openshiping');
+	Openshiping.style.display = 'block';
+}
+function OpenFeeds(){
+	var OpenFeeds = document.getElementById('OpenFeeds');
+	OpenFeeds.style.display = 'block';
+}
+</script>	
 </body>
 </html>
