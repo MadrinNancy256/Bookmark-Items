@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Account settings</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style>
+	body{
+		background: white;
+	}
+	a{
+		text-decoration: none;
+		color: black;
+		font-size:20px;
+	}
+		.accHeader{
+			background: red;
+			color:white;
+			display:flex;
+			font-size: 20px;
+			text-align: center;
+		}
+		label{
+			font-size: 20px;
+			font-weight: bold;
+			border-bottom:2px solid white;
+		}
+		.settings{
+			flex: 1;
+			padding: 10px;
+		}
+		.center{
+			flex: 2;
+			border-left:2px solid white;
+			border-right:2px solid white;
+			padding: 10px;
+		}
+		.liveChat{
+			flex: 1;
+			padding: 10px;
+		}
+		.accHeader div:hover{
+			background: black;
+		}
+		.PersonalInfo{
+			background: red;
+			color: white;
+			display: flex;
+			position: relative;
+			padding: 10px;
+			border-bottom-left-radius: 20px;
+			border-bottom-right-radius: 20px;
+		}
+		.PersonalInfo input[type="image"]{
+			border-radius: 50%;
+			background-size: cover;
+			background-position: center;
+			width: 150px;
+			height: 100px;
+		}
+		.PersonalInfo .info{
+			margin-left: 60px;
+		}
+		.info input{
+			width: 100%;
+			padding: 10px;
+			background: red;
+			color: white;
+			font-size: 20px;
+			border: none;
+			outline: none;
+		}
+		.edit button{
+			background: red;
+			color: white;
+			font-size: 20px;
+			padding: 10px;
+			text-align: center;
+			font-weight: bold;
+		}
+		.orders{
+			padding: 10px;
+		}
+		.View_Orders{
+			float: right;
+		}
+		.ordersDes{
+			display: flex;
+			width: 100%;
+		}
+		.ordersDes a{
+			flex: 1;
+			position: relative;
+			padding: 10px;
+			border: 1px solid black;
+		}
+		.ordersDes span{
+			position: absolute;
+			top: 0;
+			/*right: 0;*/
+			background: red;
+			color: white;
+			font-size: 20px;
+			border-radius: 50%;
+			width: 20px;
+			text-align: center;
+		}
+		.LanguageInputs{
+			padding: 10px;
+			background: black;
+			color: white;
+		}
+		.directors h3{
+			margin-top: 10px;
+		}
+		.class .select{
+			float: right;
+			margin-right: 20px;
+			margin-top:-20px; 
+		}
+		select{
+			padding: 10px;
+			color: white;
+			background: black;
+			font-size: 20px;
+			border: none;
+			outline: none;
+		}
+		.home{
+			width: 100%;
+			background: red;
+			color: white;
+			text-align: center;
+			padding: 10px;
+			position: fixed;
+			bottom: 0;
+		}
+		.home a{
+			color: white;
+			font-size: 20px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body onload="openSettings()">
+<div class="accHeader">
+	<div class="settings">
+		<h3>&#9881;</h3>
+	</div>
+	<div class="center">
+		<h3>MyCenter</h3>
+	</div>
+	<div class="liveChat">
+		<h3>LiveChat</h3>
+	</div>
+</div><hr>
+<div class="PersonalInfo">
+	<div class="overall">
+		<div class="inputs">
+			<input type="image" src="flowers/flower1.jpg" alt="editImage">
+		</div>
+		<div class="edit">
+			<button class="editPen">editInfo&#128394;</button>
+		</div>
+	</div>
+	<div class="info">
+		<div class="inputs">
+			<label>Name:</label>
+			<input type="text " name="fname" placeholder="Insert Your name here...">
+		</div>
+		<div class="inputs" style="float: right;">
+			<label>E-mail:</label>
+			<input type="email " name="femail"  placeholder="Insert Your email here...">
+		</div>
+	</div>
+</div>
+<div class="orders">
+	<div class="order">
+		<h2>Orders</h2>
+	</div>
+	<div class="View_Orders">
+		<a href="#">View All&#10095;</a>
+	</div>
+	<div style="clear: both;"></div>
+</div>
+<div class="ordersDes">
+	<a href="#">Unpaid
+		<span>0</span></a>
+	<a href="#">Paid<span>0</span></a>
+	<a href="#">InTransit<span>0</span></a>
+	<a href="#">Returned<span>0</span></a>
+	<a href="#">Cancelled<span>0</span></a>
+</div>
+<div class="orders service">
+	<div class="serv">
+		<h2>Services</h2>
+	</div>
+	<div class=" ordersDes servs">
+		<a href="#">Invite Friends</a>
+		<a href="#">Recent Viewed</a>
+		<a href="#">Coupons Avilable<span>0</span></a>
+		<a href="AddTOFavs.html">Favourites&hearts;</a>
+		<a href="#">Chat</a>
+		<a href="#">FAQ</a>
+		<a href="#">About us</a>
+	</div>
+</div>
+<div class="LanguageInputs">
+	<div class="lang">
+		<h3>Language & Country</h3>
+	</div><hr>
+	<div class="AllInfo">
+		<div class="class shipping">
+			<div class="directors">
+				<h3>Ship to</h3>
+			</div>
+			<div class=" select Country-flag" style="float: right;">
+				<select>
+					<option value="">Choose Country</option>
+					<option value="Usa">USA</option>
+					<option value="UK">UK</option>
+					<option value="">Italy</option>
+					<option value="">Germany</option>
+					<option value="">France</option>
+					<option value="">Egypt</option>
+					<option value="">China</option>
+				</select>
+			</div>
+				<div style="clear: both;"></div>	
+		</div><hr>
+		<div class=" class language">
+			<div class="directors">
+				<h3>Language</h3>
+			</div>
+			<div class="select Language">
+				<select>
+						<option value="">Choose Language</option>
+						<option value="Usa">English</option>
+						<option value="UK">French</option>
+						<option value="">Spanish</option>
+						<option value="">Arabic</option>
+						<option value="">Korean</option>
+						<option value="">Chinnese</option>
+						<option value="">Luganda</option>
+					</select>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+	</div>
+</div>
+<div class="home">
+	<a href="index.html">Backhome</a>
+</div>
+<script type="text/javascript" src="main.js"></script>	
+</body>
+</html>

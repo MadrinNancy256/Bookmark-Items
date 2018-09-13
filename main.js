@@ -57,23 +57,20 @@ var imageFolder  = 'flowers';
 //Category button whn clicked
 var asideNav = document.getElementById('Navigation');
 var container = document.getElementById('container');
-function VerticalNav(){
+function OpenSidenav(){
 	//console.log('hey');	
 	if(asideNav.style.display ==='none'){
-		asideNav.style.width = '300px';
 		asideNav.style.display = 'block';
-		container.style.marginLeft = '300px';
+		// container.style.marginTop = '300px';
 	}else{
-		asideNav.style.width = '0px';
 		asideNav.style.display = 'none';
-		container.style.marginLeft = '0px';
+		// container.style.marginTop = '0px';
 	}
 }
 //ContainerMarginBack
 function ContainerMarginBack(){
-	asideNav.style.width = '0px';
 	asideNav.style.display = 'none';
-	container.style.marginLeft = '0px';
+	// container.style.marginTop = '0px';
 }
 var num =0;
 var added = document.getElementById('Minus_Plus');

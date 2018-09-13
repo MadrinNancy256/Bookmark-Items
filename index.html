@@ -11,20 +11,7 @@
 		<input type="search" name="search" placeholder="Search here" id="search_box">
 		<div style="clear: both;"></div>
 	</div>
-	<div class="verticalnav" id="Navigation">
-			<span onclick="return ContainerMarginBack(this.parentElement.style.display ='none')" class="Btn_close"id="times">&times;</span>
-			<div class="Des">
-				<h2>Choose Category</h2>
-			</div>
-		<div>
-			<a href="#" onclick="Natural_flowers()">Natural Flowers</a>
-			<a href="#" onclick="Natural_flowers()">Artificial Flowers</a>
-			<a href="#" onclick="Natural_flowers()">InsideHouse Natural Flowers</a>
-			<a href="#" onclick="Natural_flowers()">Decoration Fowers Flowers</a>
-			<a href="#" onclick="Natural_flowers()">Wedding & Party Flowers</a>
-			<a href="#" onclick="Natural_flowers()">Lover's Gifts Flowers</a>
-		</div>
-		</div>
+	
 <div class="SlidesContainer">
 	<div class="bodyLoadSliders">
 		<img src="flowers/slider.jpg" alt="slider1" class="sliders">
@@ -42,7 +29,23 @@
 		<span class="dots" onclick="CurrentSlide(3)">3</span>
 		<span class="dots" onclick="CurrentSlide(4)">4</span>
 	</div>
-<div class="container" id="container">	
+<div class="container" id="container">
+<div class="Category" id="Navigation">	
+	<span onclick="return ContainerMarginBack(this.parentElement.style.display ='none')" class="Btn_close"id="times">&times;</span>
+<div class="Des">
+				<h2>Choose Category</h2>
+			</div>	
+	<div class="verticalnav">
+			<a href="#" onclick="Natural_flowers()">All Flowers</a>
+			<a href="#" onclick="Natural_flowers()">Natural Flowers</a>
+			<a href="#" onclick="Natural_flowers()">Artificial Flowers</a>
+			<a href="#" onclick="Natural_flowers()">InsideHouse Natural Flowers</a>
+			<a href="#" onclick="Natural_flowers()">Decoration Fowers Flowers</a>
+			<a href="#" onclick="Natural_flowers()">Wedding & Party Flowers</a>
+			<a href="#" onclick="Natural_flowers()">Lover's Gifts Flowers</a>
+		
+	</div>
+</div>
 <div id="Modal" class="Modal">
 		<span onclick="CloseDiv()" class="Btn_close">&times;</span>
 		<div id="CaptionText"></div>
@@ -98,16 +101,16 @@
 	<footer class="footer Nav1" id="DisplayWhenImgClicked" style="flex: 1;">
 		<a href="index.html">Home</a>
 		<a href="CartItems.html" id="Home_ViewCart1">View Cart&#x1f6d2;</a>
-		<a href="#"  onclick="return OpenAccountSettings()">Account</a>
+		<a href="Account.html" >Account</a>
 		<a href="#" class="Home_links">&hearts; Save</a>
 		<a href="#" id="AddToCart" style="background: red; color: white;">Add To Cart&#x1f6d2;</a>
 	</footer> 
 	<footer  class="footer Nav2" id="DisplayedAtHome">
 		<a href="index.html" style="background: red;">Home&#x1F3E0;</a>
-		<a href="index.html">Category</a>
+		<a href="#" onclick="OpenSidenav()">Category</a>
 		<a href="CartItems.html" id="Home_ViewCart2">View Cart&#x1f6d2;</a>
 		<a href="AddToFavs.html" id="Home_ViewCart2">Favourites&hearts;</a>
-		<a href="#"  onclick="return OpenAccountSettings()">Account</a>
+		<a href="Account.html"  >Account</a>
 	</footer>
 	<script type="text/javascript" src="main.js"></script>
 </body>
